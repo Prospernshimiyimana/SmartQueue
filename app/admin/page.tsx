@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { io } from "socket.io-client";
+import { Socket } from "socket.io-client";
 
 type Ticket = {
   id: string;
@@ -13,7 +14,7 @@ type Ticket = {
 export default function AdminPage() {
   const router = useRouter();
   const [tickets, setTickets] = useState<Ticket[]>([]);
-  const [socket, setSocket] = useState<unknown>(null);
+  const [socket, setSocket] = useState<Socket | null>(null);;
 
   // 🔐 AUTH CHECK
   useEffect(() => {
